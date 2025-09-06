@@ -2,6 +2,8 @@ import express, { json } from "express";
 import { config } from "dotenv";
 import router from "./router/index.js";
 import morgan from "morgan";
+import swaggerUi from "swagger-ui-express";
+import swaggerDocument from "./swagger-output.json" assert { type: "json" };
 
 config("path", "../.env");
 
@@ -17,6 +19,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/v1", router);
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.listen(PORT, () => {
   console.log(`Servidor escuchando en http://localhost:${PORT}`);
