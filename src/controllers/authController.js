@@ -1,0 +1,3 @@
+/**
+ * Archive of authentication controller
+ */

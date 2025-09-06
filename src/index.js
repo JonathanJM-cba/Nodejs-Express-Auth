@@ -1,5 +1,6 @@
 import express from "express";
 import { config } from "dotenv";
+import router from "./router/index.js";
 
 config("path", "../.env");
 
@@ -12,6 +13,8 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.send("Bienvenido a mi API autenticación con Node.js y Express");
 });
+
+app.use("/api", router);
 
 app.listen(PORT, () => {
   console.log(`Servidor escuchando en http://localhost:${PORT}`);
