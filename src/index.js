@@ -4,6 +4,7 @@ import router from "./router/index.js";
 import morgan from "morgan";
 import swaggerUi from "swagger-ui-express";
 import swaggerDocument from "./swagger-output.json" assert { type: "json" };
+import cookieParser from "cookie-parser";
 
 config("path", "../.env");
 
@@ -13,6 +14,7 @@ const app = express();
 
 app.use(morgan("dev"));
 app.use(express.json());
+app.use(cookieParser());
 
 app.get("/", (req, res) => {
   res.send("Bienvenido a mi API autenticación con Node.js y Express");

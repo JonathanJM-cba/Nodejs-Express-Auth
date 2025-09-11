@@ -3,7 +3,7 @@
  */
 
 import { Router } from "express";
-import { registerUser } from "../controllers/authController.js";
+import { loginUser, registerUser } from "../controllers/authController.js";
 import { authValidator } from "../validators/authValidator.js";
 
 const router = Router();
@@ -18,5 +18,16 @@ const router = Router();
  * @response {Object} 500 - Error del servidor
  */
 router.post("/register", authValidator, registerUser);
+
+/**
+ * @router POST /login
+ * @desc Iniciar sesión de usuario
+ * @access Público
+ * @response {Object} 200 - Login exitoso con accessToken y refreshToken
+ * @response {Object} 404 - Error: Usuario no encontrado
+ * @response {Object} 401 - Error: Contraseña inválida
+ * @response {Object} 500 - Error del servidor
+ */
+router.post("/login", authValidator, loginUser);
 
 export default router;
