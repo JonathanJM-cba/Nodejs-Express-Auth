@@ -4,6 +4,7 @@
 
 import { Router } from "express";
 import { registerUser } from "../controllers/authController.js";
+import { authValidator } from "../validators/authValidator.js";
 
 const router = Router();
 
@@ -16,6 +17,6 @@ const router = Router();
  * @response {Object} 400 - Error: El usuario ya existe
  * @response {Object} 500 - Error del servidor
  */
-router.post("/register", registerUser);
+router.post("/register", authValidator, registerUser);
 
 export default router;
