@@ -4,6 +4,12 @@
 
 import { Users } from "../models/userModel.js";
 
+export const getUserById = async (id) => {
+  return await Users.find({
+    _id: id,
+  });
+};
+
 export const getUserByUsername = async (username) => {
   return await Users.findOne({ username });
 };

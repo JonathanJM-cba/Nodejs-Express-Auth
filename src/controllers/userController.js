@@ -2,6 +2,8 @@ import { getAllUsersService } from "../services/userService.js";
 import { handleHttpError } from "../utils/handleHttpError.js";
 
 export const getAllUsers = async (req, res) => {
+  const user = req.user;
+  console.log("Usuario que hizo la petición:", user);
   try {
     const users = await getAllUsersService();
     res.status(200).json(users);

@@ -35,3 +35,16 @@ export const generateToken = async (user) => {
     console.log("Error generating token:", error);
   }
 };
+
+/**
+ * Función para verificar un token
+ * @param {string} token - Pasar el token a verificar
+ * @returns - Retorna el payload del token si es válido, de lo contrario retorna undefined
+ */
+export const verifyToken = async (token) => {
+  try {
+    return await jwt.verify(token, SECRET_ACCESS_TOKEN);
+  } catch (error) {
+    console.log("Error al verificar token:", error);
+  }
+};
